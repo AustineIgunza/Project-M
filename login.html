@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnForge - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1e3a8a 25%, #3b82f6 50%, #1e40af 75%, #000000 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background elements */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 40px;
+            height: 40px;
+            top: 30%;
+            right: 25%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        /* 2FA Styles */
+        .twofa-container {
+            display: none;
+        }
+
+        .code-input-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .code-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .code-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #22c55e;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container" id="loginForm">
+        <div class="logo">🧠 LearnForge</div>
+        <p class="tagline">Transform your mind through discovery</p>
+        
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="login-btn" id="loginBtn">
+                Sign In
+            </button>
+        </form>
+    </div>
+
+    <!-- 2FA Form -->
+    <div class="login-container twofa-container" id="twofaForm">
+        <div class="logo">🔒 Verification</div>
+        <p class="tagline">Enter the 6-digit code sent to your device</p>
+        
+        <div class="code-input-group">
+            <input type="text" class="code-input" maxlength="1" oninput="handleCodeInput(this, 0)">
+            <input type="text" class="code-input" maxlength="1" oninput="handleCodeInput(this, 1)">
+            <input type="text" class="code-input" maxlength="1" oninput="handleCodeInput(this, 2)">
+            <input type="text" class="code-input" maxlength="1" oninput="handleCodeInput(this, 3)">
+            <input type="text" class="code-input" maxlength="1" oninput="handleCodeInput(this, 4)">
+            <input type="text" class="code-input" maxlength="1" oninput="handleCodeInput(this, 5)">
+        </div>
+        
+        <button type="button" class="login-btn" id="verifyBtn" onclick="handleVerification()">
+            Verify & Continue
+        </button>
+        
+        <p style="margin-top: 20px; color: rgba(255, 255, 255, 0.7); font-size: 14px;">
+            Didn't receive the code? <a href="#" style="color: #3b82f6;">Resend</a>
+        </p>
+    </div>
+
+    <script>
+        let verificationCode = '';
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            
+            // Show loading state
+            loginBtn.innerHTML = '<div class="loading-spinner"></div>Signing In...';
+            loginBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                console.log('Login attempt:', { email, password });
+                
+                // Hide login form and show 2FA
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('twofaForm').style.display = 'block';
+                
+                // Reset button
+                loginBtn.innerHTML = 'Sign In';
+                loginBtn.disabled = false;
+            }, 1500);
+        }
+
+        function handleCodeInput(input, index) {
+            const value = input.value;
+            
+            // Only allow numbers
+            if (!/^\d$/.test(value)) {
+                input.value = '';
+                return;
+            }
+            
+            // Update verification code
+            verificationCode = verificationCode.substring(0, index) + value + verificationCode.substring(index + 1);
+            
+            // Auto-focus next input
+            if (value && index < 5) {
+                const nextInput = input.parentNode.children[index + 1];
+                if (nextInput) nextInput.focus();
+            }
+            
+            // Auto-submit if all 6 digits are entered
+            if (verificationCode.replace(/\s/g, '').length === 6) {
+                setTimeout(() => handleVerification(), 500);
+            }
+        }
+
+        function handleVerification() {
+            const codeInputs = document.querySelectorAll('.code-input');
+            const code = Array.from(codeInputs).map(input => input.value).join('');
+            const verifyBtn = document.getElementById('verifyBtn');
+            
+            if (code.length !== 6) {
+                alert('Please enter all 6 digits');
+                return;
+            }
+            
+            // Show loading state
+            verifyBtn.innerHTML = '<div class="loading-spinner"></div>Verifying...';
+            verifyBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                console.log('2FA verification:', { code });
+                
+                // Show success and redirect to dashboard
+                document.getElementById('twofaForm').innerHTML = `
+                    <div class="logo">✅ Success!</div>
+                    <p class="tagline">Authentication completed successfully</p>
+                    <div class="success-message">
+                        <strong>Welcome to LearnForge!</strong><br>
+                        Redirecting to your dashboard...
+                    </div>
+                `;
+                
+                // Redirect to dashboard after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            }, 1500);
+        }
+
+        // Handle backspace in code inputs
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Backspace') {
+                const focused = document.activeElement;
+                if (focused.classList.contains('code-input')) {
+                    const inputs = document.querySelectorAll('.code-input');
+                    const currentIndex = Array.from(inputs).indexOf(focused);
+                    
+                    if (focused.value === '' && currentIndex > 0) {
+                        inputs[currentIndex - 1].focus();
+                        inputs[currentIndex - 1].value = '';
+                    } else {
+                        focused.value = '';
+                    }
+                }
+            }
+        });
+
+        // Initialize verification code
+        verificationCode = '      '; // 6 spaces
+    </script>
+</body>
+</html>

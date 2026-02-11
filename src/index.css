@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.0%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Glass morphism effects */
+  .glass {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+  
+  .glass-strong {
+    @apply backdrop-blur-2xl bg-white/10 border border-white/20;
+  }
+
+  /* Mission cards */
+  .mission-card {
+    @apply relative overflow-hidden rounded-2xl p-6 transition-all duration-300;
+    @apply glass hover:glass-strong hover:scale-[1.02];
+  }
+
+  .mission-card-locked {
+    @apply opacity-60 cursor-not-allowed;
+  }
+
+  .mission-card-active {
+    @apply ring-2 ring-primary-500 animate-pulse-glow;
+  }
+
+  .mission-card-completed {
+    @apply bg-success-gradient/20 border-green-500/30;
+  }
+
+  /* XP animations */
+  .xp-gain {
+    @apply animate-xp-gain pointer-events-none;
+  }
+
+  /* Progress rings */
+  .progress-ring {
+    @apply transform -rotate-90;
+  }
+
+  .progress-ring-circle {
+    @apply fill-none stroke-current;
+    stroke-linecap: round;
+    stroke-width: 8;
+    transition: stroke-dashoffset 0.5s ease-in-out;
+  }
+
+  /* Streak indicators */
+  .streak-fire {
+    @apply text-orange-500;
+    filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.6));
+  }
+
+  /* Level badges */
+  .level-badge {
+    @apply inline-flex items-center justify-center;
+    @apply w-12 h-12 rounded-full font-bold text-sm;
+    @apply bg-mission-gradient text-white;
+    @apply ring-4 ring-primary-500/20;
+  }
+
+  /* Button variants */
+  .btn-fortress {
+    @apply inline-flex items-center justify-center;
+    @apply px-6 py-3 rounded-xl font-semibold;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+
+  .btn-primary {
+    @apply btn-fortress bg-mission-gradient text-white;
+    @apply hover:scale-105 focus:ring-primary-500;
+    @apply shadow-lg hover:shadow-primary-500/25;
+  }
+
+  .btn-secondary {
+    @apply btn-fortress glass-strong text-gray-200;
+    @apply hover:bg-white/20 focus:ring-gray-400;
+  }
+
+  .btn-success {
+    @apply btn-fortress bg-success-gradient text-white;
+    @apply hover:scale-105 focus:ring-green-500;
+    @apply shadow-lg hover:shadow-green-500/25;
+  }
+
+  .btn-danger {
+    @apply btn-fortress bg-critical-gradient text-white;
+    @apply hover:scale-105 focus:ring-red-500;
+    @apply shadow-lg hover:shadow-red-500/25;
+  }
+
+  /* Form elements */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-xl;
+    @apply glass text-white placeholder-gray-400;
+    @apply border-2 border-transparent;
+    @apply focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
+    @apply transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-200 mb-2;
+  }
+
+  /* Loading states */
+  .loading-spinner {
+    @apply inline-block w-5 h-5 border-2 border-current border-t-transparent;
+    @apply rounded-full animate-spin;
+  }
+
+  /* Notification styles */
+  .notification-success {
+    @apply bg-green-600 border border-green-500 text-white;
+  }
+
+  .notification-error {
+    @apply bg-red-600 border border-red-500 text-white;
+  }
+
+  .notification-info {
+    @apply bg-blue-600 border border-blue-500 text-white;
+  }
+
+  .notification-warning {
+    @apply bg-yellow-600 border border-yellow-500 text-white;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.5) rgba(31, 41, 55, 0.5);
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for better accessibility */
+.focus-visible {
+  @apply outline-none;
+}
+
+.focus-visible:focus-visible {
+  @apply ring-2 ring-primary-500 ring-offset-2 ring-offset-gray-900;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

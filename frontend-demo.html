@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 LearnForge - Frontend Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 25%, #16213e 50%, #0f172a 75%, #000000 100%);
+            color: white;
+            padding: 2rem;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            background: linear-gradient(45deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .feature-card {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .backend-integration {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .setup-step {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .tech-badge {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .team-card {
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        .status-ready { background: #10b981; }
+        .status-progress { background: #f59e0b; }
+        .cta-section {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: white;
+            color: #1e3a8a;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 LearnForge Frontend</h1>
+        <p style="font-size: 1.3rem; color: #9ca3af; margin-bottom: 2rem;">
+            Modern React/TypeScript frontend perfectly aligned with your Supabase backend
+        </p>
+
+        <div class="backend-integration">
+            <h2 style="color: #10b981; margin-bottom: 1rem;">
+                ✅ Perfect Backend Integration Ready
+            </h2>
+            <p>This frontend is architecturally designed to match your exact Supabase schema and Edge Functions. Zero backend modifications required!</p>
+            
+            <div class="code-block">
+// ✅ Database types match your Postgres schema exactly<br>
+interface Profile {<br>
+&nbsp;&nbsp;id: string<br>
+&nbsp;&nbsp;university_id: string<br>
+&nbsp;&nbsp;current_xp: number<br>
+&nbsp;&nbsp;streak_count: number<br>
+&nbsp;&nbsp;role: 'student' | 'admin'<br>
+}<br>
+<br>
+// ✅ Edge Function integration<br>
+const response = await supabase.functions.invoke('submit-mission', {<br>
+&nbsp;&nbsp;body: { mission_id, user_answer, user_id }<br>
+})
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3 style="color: #3b82f6;">Perfect Schema Match</h3>
+                <p>TypeScript interfaces mirror your Postgres tables exactly. Profile, Mission, UserProgress, and MissionAttempts types are ready.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3 style="color: #3b82f6;">Real-time Integration</h3>
+                <p>WebSocket subscriptions to your Postgres changes. XP updates, mission unlocks, and progress tracking in real-time.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔐</span>
+                <h3 style="color: #3b82f6;">Auth & Security</h3>
+                <p>Supabase Auth integration with RLS policies. Multi-tenancy by university_id. Student/admin role support.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🎮</span>
+                <h3 style="color: #3b82f6;">Behavioral Engine</h3>
+                <p>Implements all 14 behavioral principles. Progression locks, variable rewards, streak management, and safe failure.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3 style="color: #3b82f6;">PWA Ready</h3>
+                <p>Add to home screen capability. Offline support with Workbox. Service worker for background sync.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🚀</span>
+                <h3 style="color: #3b82f6;">Production Ready</h3>
+                <p>TypeScript throughout. Tailwind CSS. Code splitting. Performance optimized. Ready for February deadline.</p>
+            </div>
+        </div>
+
+        <h2 style="color: #3b82f6; margin: 3rem 0 1.5rem;">🛠️ Tech Stack</h2>
+        <div class="tech-stack">
+            <span class="tech-badge">React 18</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">Tailwind CSS</span>
+            <span class="tech-badge">Framer Motion</span>
+            <span class="tech-badge">Zustand</span>
+            <span class="tech-badge">Supabase Client</span>
+            <span class="tech-badge">Vite</span>
+            <span class="tech-badge">PWA</span>
+        </div>
+
+        <h2 style="color: #3b82f6; margin: 3rem 0 1.5rem;">👥 Team Integration</h2>
+        <div class="team-section">
+            <div class="team-card">
+                <h3>🎨 Frontend Team</h3>
+                <p><strong>Griffin + Austine</strong></p>
+                <p><span class="status-indicator status-ready"></span>React/TSX structure complete</p>
+                <p><span class="status-indicator status-ready"></span>Component architecture ready</p>
+                <p><span class="status-indicator status-ready"></span>Zustand state management</p>
+                <p><span class="status-indicator status-ready"></span>Tailwind styling system</p>
+            </div>
+            
+            <div class="team-card">
+                <h3>⚡ Backend Team</h3>
+                <p><strong>Ian + Nehemiah</strong></p>
+                <p><span class="status-indicator status-ready"></span>Schema types match exactly</p>
+                <p><span class="status-indicator status-ready"></span>Edge Function calls ready</p>
+                <p><span class="status-indicator status-ready"></span>RLS policies respected</p>
+                <p><span class="status-indicator status-ready"></span>Real-time subscriptions</p>
+            </div>
+            
+            <div class="team-card">
+                <h3>📊 Business Team</h3>
+                <p><strong>Devyan</strong></p>
+                <p><span class="status-indicator status-ready"></span>Mission JSON structure</p>
+                <p><span class="status-indicator status-ready"></span>Multi-tenancy support</p>
+                <p><span class="status-indicator status-ready"></span>Analytics hooks</p>
+                <p><span class="status-indicator status-ready"></span>University onboarding</p>
+            </div>
+        </div>
+
+        <h2 style="color: #3b82f6; margin: 3rem 0 1.5rem;">🚀 Quick Setup</h2>
+        
+        <div class="setup-step">
+            <h3>1. Environment Configuration</h3>
+            <div class="code-block">
+# Update .env with your Supabase values<br>
+VITE_SUPABASE_URL=http://localhost:54321<br>
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key<br>
+<br>
+# For production<br>
+VITE_SUPABASE_URL=https://your-project.supabase.co
+            </div>
+        </div>
+
+        <div class="setup-step">
+            <h3>2. Install & Run</h3>
+            <div class="code-block">
+npm install          # Install dependencies<br>
+npm run dev          # Start development (port 3000)<br>
+npm run build        # Build for production<br>
+npm run preview      # Preview production build
+            </div>
+        </div>
+
+        <div class="setup-step">
+            <h3>3. Backend Connection</h3>
+            <div class="code-block">
+# Start your Supabase backend (Ian & Nehemiah)<br>
+supabase start<br>
+<br>
+# Frontend automatically connects to localhost:54321<br>
+# Real-time subscriptions activate<br>
+# Edge Functions ready for calls
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-bottom: 1rem;">🎯 Ready for Your Supabase Backend</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Complete frontend architecture that perfectly matches your database schema and Edge Functions. 
+                Just connect to your Supabase instance and you're ready for production!
+            </p>
+            
+            <a href="FRONTEND-INTEGRATION.md" class="btn btn-primary">📖 View Integration Guide</a>
+            <a href="index.html" class="btn btn-primary">🚀 Launch Application</a>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: rgba(31, 41, 55, 0.5); border-radius: 12px;">
+            <h3>💡 Key Benefits for Team</h3>
+            <ul style="text-align: left; color: #9ca3af; line-height: 1.8;">
+                <li>Zero backend modifications needed - frontend matches your schema exactly</li>
+                <li>Real-time UI updates via WebSocket subscriptions to your Postgres changes</li>
+                <li>Complete TypeScript safety with your database types</li>
+                <li>Progressive Web App for mobile distribution</li>
+                <li>Behavioral design principles implemented (all 14 requirements)</li>
+                <li>Ready for February deadline - just connect and deploy</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)'
+            })
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)'
+            })
+        })
+    </script>
+</body>
+</html>
