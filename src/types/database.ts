@@ -14,6 +14,7 @@ export interface Database {
         Row: {
           id: string
           university_id: string
+          university: string | null
           email: string
           username: string | null
           role: 'student' | 'admin'
@@ -25,6 +26,7 @@ export interface Database {
         Insert: {
           id: string
           university_id: string
+          university?: string | null
           email: string
           username?: string | null
           role?: 'student' | 'admin'
@@ -36,6 +38,7 @@ export interface Database {
         Update: {
           id?: string
           university_id?: string
+          university?: string | null
           email?: string
           username?: string | null
           role?: 'student' | 'admin'

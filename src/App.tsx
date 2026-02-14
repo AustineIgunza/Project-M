@@ -18,6 +18,8 @@ import MissionPage from '@/pages/missions/MissionPage'
 import ProgressPage from '@/pages/progress/ProgressPage'
 import LeaderboardPage from '@/pages/leaderboard/LeaderboardPage'
 import ProfilePage from '@/pages/profile/ProfilePage'
+import LearningPathsPage from '@/pages/learning/LearningPathsPage'
+import LessonsPage from '@/pages/learning/LessonsPage'
 
 function App() {
   const { initialize: initAuth, loading: authLoading, isAuthenticated } = useAuthStore()
@@ -25,15 +27,18 @@ function App() {
 
   useEffect(() => {
     // Initialize authentication on app start
-    initAuth()
+    const init = async () => {
+      await initAuth()
+    }
+    init()
   }, [initAuth])
 
   useEffect(() => {
     // Initialize game state when user is authenticated
-    if (isAuthenticated) {
+    if (isAuthenticated && !authLoading) {
       initGame()
     }
-  }, [isAuthenticated, initGame])
+  }, [isAuthenticated, authLoading, initGame])
 
   // Show loading screen during initial auth check
   if (authLoading) {
@@ -119,6 +124,26 @@ function App() {
               <ProtectedRoute>
                 <GameLayout>
                   <ProfilePage />
+                </GameLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/learning-paths" 
+            element={
+              <ProtectedRoute>
+                <GameLayout>
+                  <LearningPathsPage />
+                </GameLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/lessons/:lessonId" 
+            element={
+              <ProtectedRoute>
+                <GameLayout>
+                  <LessonsPage />
                 </GameLayout>
               </ProtectedRoute>
             } 

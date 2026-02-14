@@ -6,13 +6,13 @@ interface GameLayoutProps {
 
 const GameLayout = ({ children }: GameLayoutProps) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-blue-950 to-slate-900 relative overflow-hidden">
       {/* Game Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-20 h-20 bg-emerald-400/20 rounded-full blur-lg animate-bounce"></div>
-        <div className="absolute top-32 right-16 w-16 h-16 bg-teal-400/20 rounded-full blur-md animate-bounce delay-500"></div>
-        <div className="absolute bottom-24 left-24 w-24 h-24 bg-cyan-400/20 rounded-full blur-lg animate-bounce delay-1000"></div>
-        <div className="absolute bottom-16 right-20 w-18 h-18 bg-green-400/20 rounded-full blur-md animate-bounce delay-1500"></div>
+        <div className="absolute top-10 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-lg animate-bounce"></div>
+        <div className="absolute top-32 right-16 w-16 h-16 bg-blue-500/10 rounded-full blur-md animate-bounce delay-500"></div>
+        <div className="absolute bottom-24 left-24 w-24 h-24 bg-blue-400/10 rounded-full blur-lg animate-bounce delay-1000"></div>
+        <div className="absolute bottom-16 right-20 w-18 h-18 bg-blue-500/10 rounded-full blur-md animate-bounce delay-1500"></div>
       </div>
 
       {/* Content Container */}

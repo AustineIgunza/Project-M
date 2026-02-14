@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnForge - Learning Paths</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/learning-paths.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-brain"></i>
+                LearnForge
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="learning-paths.html">
+                            <i class="fas fa-graduation-cap"></i> Learn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress.html">
+                            <i class="fas fa-chart-line"></i> Progress
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="achievements.html">
+                            <i class="fas fa-trophy"></i> Achievements
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-nav">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle user-menu" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32x32/1e3a8a/ffffff?text=U" alt="User profile picture" class="user-avatar">
+                            <span id="userName">John Doe</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section-paths">
+            <div class="container">
+                <div class="hero-content-paths">
+                    <h1 class="hero-title-paths">
+                        Explore Learning Paths
+                        <span class="wave">🚀</span>
+                    </h1>
+                    <p class="hero-subtitle-paths">Discover structured learning journeys designed to master new skills</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section class="search-filter-section">
+            <div class="container">
+                <div class="search-filter-container">
+                    <!-- Search Bar -->
+                    <div class="search-bar-wrapper">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search learning paths..." 
+                                   onkeyup="filterPaths()">
+                            <button class="search-clear" onclick="clearSearch()" style="display: none;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="filters-wrapper">
+                        <div class="filter-group">
+                            <label for="difficultyFilter">Difficulty</label>
+                            <select id="difficultyFilter" class="filter-select" onchange="filterPaths()">
+                                <option value="">All Levels</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="categoryFilter">Category</label>
+                            <select id="categoryFilter" class="filter-select" onchange="filterPaths()">
+                                <option value="">All Categories</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="physics">Physics</option>
+                                <option value="programming">Programming</option>
+                                <option value="accounting">Accounting</option>
+                                <option value="chemistry">Chemistry</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="durationFilter">Duration</label>
+                            <select id="durationFilter" class="filter-select" onchange="filterPaths()">
+                                <option value="">Any Duration</option>
+                                <option value="short">Under 5 hours</option>
+                                <option value="medium">5-20 hours</option>
+                                <option value="long">20+ hours</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="statusFilter">Status</label>
+                            <select id="statusFilter" class="filter-select" onchange="filterPaths()">
+                                <option value="">All Paths</option>
+                                <option value="enrolled">My Paths</option>
+                                <option value="completed">Completed</option>
+                                <option value="available">Available</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-outline-custom btn-sm" onclick="resetFilters()">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Paths Carousel -->
+        <section class="featured-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Featured Paths</h2>
+                    <p>Recommended learning journeys for you</p>
+                </div>
+
+                <div class="featured-carousel">
+                    <div class="featured-card">
+                        <div class="featured-badge">Featured</div>
+                        <div class="featured-image">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="featured-content">
+                            <h3>Advanced Mathematics</h3>
+                            <p>Master complex mathematical concepts including calculus, linear algebra, and differential equations.</p>
+                            <div class="featured-meta">
+                                <span><i class="fas fa-clock"></i> 45 hours</span>
+                                <span><i class="fas fa-book"></i> 12 concepts</span>
+                            </div>
+                            <button class="btn btn-primary-custom btn-sm" onclick="enrollPath('advanced-math')">
+                                <i class="fas fa-play"></i> Start Path
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="featured-card">
+                        <div class="featured-badge">Popular</div>
+                        <div class="featured-image">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="featured-content">
+                            <h3>Programming Fundamentals</h3>
+                            <p>Learn the foundations of programming with hands-on projects and real-world applications.</p>
+                            <div class="featured-meta">
+                                <span><i class="fas fa-clock"></i> 30 hours</span>
+                                <span><i class="fas fa-book"></i> 10 concepts</span>
+                            </div>
+                            <button class="btn btn-primary-custom btn-sm" onclick="enrollPath('programming-101')">
+                                <i class="fas fa-play"></i> Start Path
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="featured-card">
+                        <div class="featured-badge">New</div>
+                        <div class="featured-image">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <div class="featured-content">
+                            <h3>Physics Fundamentals</h3>
+                            <p>Explore the laws of motion, energy, and forces through interactive simulations and experiments.</p>
+                            <div class="featured-meta">
+                                <span><i class="fas fa-clock"></i> 35 hours</span>
+                                <span><i class="fas fa-book"></i> 11 concepts</span>
+                            </div>
+                            <button class="btn btn-primary-custom btn-sm" onclick="enrollPath('physics-101')">
+                                <i class="fas fa-play"></i> Start Path
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sidebar and Main Content -->
+        <div class="container paths-container">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3">
+                    <!-- Active Paths -->
+                    <div class="section-card sidebar-card">
+                        <div class="section-header">
+                            <h3><i class="fas fa-play-circle"></i> My Paths</h3>
+                        </div>
+                        <div class="active-paths-list" id="activePathsList">
+                            <div class="active-path-item">
+                                <div class="active-path-name">Advanced Mathematics</div>
+                                <div class="active-path-progress">
+                                    <div class="progress-bar-custom">
+                                        <div class="progress-fill" style="width: 75%"></div>
+                                    </div>
+                                    <span class="progress-text">75%</span>
+                                </div>
+                            </div>
+                            <div class="active-path-item">
+                                <div class="active-path-name">Physics Fundamentals</div>
+                                <div class="active-path-progress">
+                                    <div class="progress-bar-custom">
+                                        <div class="progress-fill" style="width: 45%"></div>
+                                    </div>
+                                    <span class="progress-text">45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Paths -->
+                    <div class="section-card sidebar-card">
+                        <div class="section-header">
+                            <h3><i class="fas fa-lightbulb"></i> Recommended</h3>
+                        </div>
+                        <div class="recommended-list" id="recommendedList">
+                            <div class="recommended-item">
+                                <div class="recommended-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="recommended-info">
+                                    <div class="recommended-name">Accounting Basics</div>
+                                    <div class="recommended-reason">Based on your interests</div>
+                                </div>
+                            </div>
+                            <div class="recommended-item">
+                                <div class="recommended-icon">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <div class="recommended-info">
+                                    <div class="recommended-name">Chemistry Essentials</div>
+                                    <div class="recommended-reason">Complements your learning</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Learning Stats -->
+                    <div class="section-card sidebar-card">
+                        <div class="section-header">
+                            <h3><i class="fas fa-chart-pie"></i> Stats</h3>
+                        </div>
+                        <div class="stats-mini-list">
+                            <div class="stat-mini-item">
+                                <span class="stat-mini-label">Paths Enrolled</span>
+                                <span class="stat-mini-value">2</span>
+                            </div>
+                            <div class="stat-mini-item">
+                                <span class="stat-mini-label">Completed</span>
+                                <span class="stat-mini-value">1</span>
+                            </div>
+                            <div class="stat-mini-item">
+                                <span class="stat-mini-label">In Progress</span>
+                                <span class="stat-mini-value">2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <!-- Paths Grid -->
+                    <div class="paths-grid" id="pathsGrid">
+                        <!-- Paths will be loaded here by JavaScript -->
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <div class="no-results-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>No paths found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                        <button class="btn btn-primary-custom" onclick="resetFilters()">
+                            <i class="fas fa-redo"></i> Reset Filters
+                        </button>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-state" id="loadingState" style="display: none;">
+                        <div class="loading-spinner"></div>
+                        <p>Loading learning paths...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Path Details Modal -->
+        <div class="modal-dialog hidden" id="pathDetailsModal">
+            <div class="modal-overlay" onclick="closePathModal()"></div>
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h2 id="modalPathName">Path Name</h2>
+                    <button class="modal-close" onclick="closePathModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="path-details-content">
+                        <div class="path-details-section">
+                            <h4>Overview</h4>
+                            <p id="modalPathDescription">Path description goes here</p>
+                        </div>
+
+                        <div class="path-details-section">
+                            <h4>Path Information</h4>
+                            <div class="path-info-grid">
+                                <div class="path-info-item">
+                                    <span class="info-label">Difficulty</span>
+                                    <span class="info-value" id="modalPathDifficulty">Intermediate</span>
+                                </div>
+                                <div class="path-info-item">
+                                    <span class="info-label">Duration</span>
+                                    <span class="info-value" id="modalPathDuration">30 hours</span>
+                                </div>
+                                <div class="path-info-item">
+                                    <span class="info-label">Concepts</span>
+                                    <span class="info-value" id="modalPathConcepts">10</span>
+                                </div>
+                                <div class="path-info-item">
+                                    <span class="info-label">Enrolled</span>
+                                    <span class="info-value" id="modalPathEnrolled">1,234</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="path-details-section">
+                            <h4>Learning Objectives</h4>
+                            <ul class="objectives-list" id="modalPathObjectives">
+                                <li>Understand core concepts</li>
+                                <li>Apply knowledge to real-world problems</li>
+                                <li>Master advanced techniques</li>
+                            </ul>
+                        </div>
+
+                        <div class="path-details-section">
+                            <h4>Prerequisites</h4>
+                            <div class="prerequisites-list" id="modalPathPrerequisites">
+                                <div class="prerequisite-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Basic Mathematics</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="path-details-section">
+                            <h4>Concepts Covered</h4>
+                            <div class="concepts-list" id="modalPathConceptsList">
+                                <!-- Concepts will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-outline-custom" onclick="closePathModal()">Close</button>
+                    <button class="btn btn-primary-custom" id="enrollButton" onclick="confirmEnroll()">
+                        <i class="fas fa-play"></i> Start Path
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/learning-paths.js"></script>
+</body>
+</html>
