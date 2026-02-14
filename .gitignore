@@ -1,1 +1,489 @@
-node_modules
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.nuxt/
+.cache/
+.vuepress/dist/
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vscode-test
+.yarn/cache
+.yarn/unplugged
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.env.local
+.env.*.local
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage
+.nyc_output
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Testing
+.mocha_output
+.nyc_output
+coverage/
+.jest_cache/
+.pytest_cache/
+
+# Misc
+.cache/
+.parcel-cache
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+.turbo/
+dist-ssr/
+*.local
+
+# Vite
+.vite/
+
+# TypeScript
+*.tsbuildinfo
+dist/
+
+# Webpack
+.webpack/
+
+# Babel
+.babelrc.js
+
+# ESLint
+.eslintignore
+
+# Prettier
+.prettierignore
+
+# Git
+.git/
+.gitkeep
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# CI/CD
+.github/workflows/
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+# Backup files
+*.backup
+*.bak
+*.old
+*.orig
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+
+# System files
+.AppleDouble
+.LSOverride
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.AppleDouble
+.DS_Store
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+.directory
+.Trash-*
+
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/tmp/
+/tmp/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# C/C++
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.so.*
+*.dylib
+*.test
+*.out
+
+# Rust
+/target/
+Cargo.lock
+
+# PHP
+vendor/
+composer.lock
+
+# Composer
+composer.phar
+/vendor/
+
+# Laravel
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/bootstrap/cache/
+.env
+.env.backup
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+
+# Symfony
+/app/config/parameters.yml
+/build/
+/phpunit.xml
+/var/
+/vendor/
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/backup-*
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+sitemap.xml
+sitemap.xml.gz
+
+# Drupal
+sites/*/settings*.php
+sites/*/files/
+sites/*/private/
+
+# Magento
+/app/etc/local.xml
+/media/
+/var/
+/downloader/pearlib/
+/downloader/cache/
+/downloader/.pearrc
+
+# Joomla
+configuration.php
+/cache/
+/tmp/
+/logs/
+
+# Temporary project files
+.project
+.buildpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# IntelliJ
+*.iml
+*.iws
+*.ipr
+.idea/
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Atom
+.atom/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Vim
+.vim/
+.vimrc
+.gvimrc
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+Session.vim
+.netrwhist
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+.emacs.d/
+auto-save-list/
+tramp
+
+# Nano
+.nano_history
+
+# Misc development
+.vscode-test
+.vscode-test-server
+.vscode-test-server-*
+.vscode-test-server-*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.swp
+*.swo
+*~
+.#*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Build artifacts
+dist/
+build/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+composer.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Testing
+coverage/
+.nyc_output/
+.jest_cache/
+.pytest_cache/
+
+# Temporary
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Compiled
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+ARCHITECTURE_ANALYSIS.md
+CRITICAL_*.md
+IMPLEMENTATION_SUMMARY.md
+*_ANALYSIS.md
+*_SUMMARY.md
+*_INDEX.md
+QUICK_REFERENCE.md
+WEBPAGE_CRITIQUE.md
